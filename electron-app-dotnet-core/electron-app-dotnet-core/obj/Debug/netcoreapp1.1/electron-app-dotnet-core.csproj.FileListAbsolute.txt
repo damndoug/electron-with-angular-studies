@@ -1,0 +1,9 @@
+C:\Users\dougl\Desktop\electron-app\electron-app-dotnet-core\electron-app-dotnet-core\bin\Debug\netcoreapp1.1\electron-app-dotnet-core.deps.json
+C:\Users\dougl\Desktop\electron-app\electron-app-dotnet-core\electron-app-dotnet-core\bin\Debug\netcoreapp1.1\electron-app-dotnet-core.runtimeconfig.json
+C:\Users\dougl\Desktop\electron-app\electron-app-dotnet-core\electron-app-dotnet-core\bin\Debug\netcoreapp1.1\electron-app-dotnet-core.runtimeconfig.dev.json
+C:\Users\dougl\Desktop\electron-app\electron-app-dotnet-core\electron-app-dotnet-core\bin\Debug\netcoreapp1.1\electron-app-dotnet-core.dll
+C:\Users\dougl\Desktop\electron-app\electron-app-dotnet-core\electron-app-dotnet-core\obj\Debug\netcoreapp1.1\electron-app-dotnet-core.csprojResolveAssemblyReference.cache
+C:\Users\dougl\Desktop\electron-app\electron-app-dotnet-core\electron-app-dotnet-core\obj\Debug\netcoreapp1.1\electron-app-dotnet-core.AssemblyInfo.cs
+C:\Users\dougl\Desktop\electron-app\electron-app-dotnet-core\electron-app-dotnet-core\bin\Debug\netcoreapp1.1\electron-app-dotnet-core.pdb
+C:\Users\dougl\Desktop\electron-app\electron-app-dotnet-core\electron-app-dotnet-core\obj\Debug\netcoreapp1.1\electron-app-dotnet-core.dll
+C:\Users\dougl\Desktop\electron-app\electron-app-dotnet-core\electron-app-dotnet-core\obj\Debug\netcoreapp1.1\electron-app-dotnet-core.pdb
