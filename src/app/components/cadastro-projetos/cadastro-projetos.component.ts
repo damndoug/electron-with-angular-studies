@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'cadastro-projetos',
@@ -10,6 +10,12 @@ export class CadastroProjetosComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
+  }
+
+  saveProject(form) {
+
+    console.log(form)
   }
 
 }

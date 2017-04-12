@@ -1,0 +1,48 @@
+<div class="ui raised very padded text segment container">
+  <form class="ui form" #f="ngForm" (ngSubmit)="saveProject(f)">
+    <h4 class="ui dividing header">Cadastro de Projetos</h4>
+    <div class="field">
+      <label>Nome do Projeto</label>
+      <div class="two fields">
+        <div class="field">
+          <input type="text" placeholder="Nome do Projeto" ngModel name="projectName" required>
+        </div>
+        <div class="field">
+          <select class="ui fluid dropdown" ngModel name="team" required>
+            <option value="Escolha o Time">Escolha o Time</option>
+            <option value="Exec">Execução</option>
+            <option value="Compras">Compras</option>
+            <option value="Ops">Operações</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="fields">
+      <div class="four wide field">
+        <label>Saving Estimado</label>
+        <input type="text" ngModel name="saving" placeholder="R$ 10.000,00" required>
+      </div>
+      <div class="four wide field">
+        <label>Prazo Estimado</label>
+        <input type="text" ngModel name="sla" placeholder="DD/MM/AAAA" required>
+      </div>
+      <div class="four wide field">
+        <label>Filial</label>
+        <select class="ui fluid search dropdown" ngModel name="branch" required> 
+          <option value="">Filial</option>
+          <option value="1">ABC</option>
+          <option value="2">SBC</option>
+        </select>
+      </div>
+    </div>
+
+    <h4 class="ui dividing header">Observações</h4>
+    <div class="field">
+      <div class="field">
+        <label>Observações</label>
+        <textarea ngModel name="obs"></textarea>
+      </div>
+    </div>
+    <button class="ui button" type="submit">Salvar</button>
+  </form>
+</div>

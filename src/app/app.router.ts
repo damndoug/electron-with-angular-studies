@@ -1,5 +1,5 @@
-import { CadastroProjetosComponent } from './cadastro-projetos/cadastro-projetos.component';
-import { IntroComponent } from './intro/intro.component';
+import { CadastroProjetosComponent } from './components/cadastro-projetos/cadastro-projetos.component';
+import { IntroComponent } from './components/intro/intro.component';
 import { Routes, RouterModule } from "@angular/router";
 
 const AppRoutes: Routes = [
