@@ -1,5 +1,5 @@
 <div class="ui raised very padded text segment container">
-  <form class="ui form" #f="ngForm" (ngSubmit)="saveProject(f)">
+  <form class="ui form" #f="ngForm">
     <h4 class="ui dividing header">Cadastro de Projetos</h4>
     <div class="field">
       <label>Nome do Projeto</label>
@@ -43,6 +43,15 @@
         <textarea ngModel name="obs"></textarea>
       </div>
     </div>
-    <button class="ui button" type="submit">Salvar</button>
+    <button class="ui button" type="submit" (click)="saveProject(f)">Salvar</button>
   </form>
+</div>
+
+<div class="ui raised very padded text segment container">
+  <h4 class="ui diving header">Projetos Cadastrados</h4>
+  <div>
+    <ul>
+      <!--<li *ngFor="let project of projects"> {{(project | async)?.name}}</li>-->
+    </ul>
+  </div>
 </div>
