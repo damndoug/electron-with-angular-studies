@@ -53,6 +53,7 @@ export class CadastroProjetosComponent implements OnInit {
   addTask(form){
 
     console.log(form)
+    
     // this.af.database.object('/projectList/')
     // this.tasks.push(form.value).then(res => console.log(res.key))
   }  
