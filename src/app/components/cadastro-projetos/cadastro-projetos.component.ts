@@ -1,6 +1,6 @@
 import { ProjectService } from './../../_services/project.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { FirebaseListObservable } from "angularfire2";
+import { FirebaseListObservable, AngularFire } from "angularfire2";
 
 @Component({
   selector: 'cadastro-projetos',
@@ -12,29 +12,16 @@ export class CadastroProjetosComponent implements OnInit {
   projectService: ProjectService;
   projects: FirebaseListObservable<any>;
 
-  constructor(ps: ProjectService) {
-
-    this.projectService = ps;
+  constructor(private af: AngularFire) {
   }
 
   ngOnInit() {
 
-    this.listProjects();  
+    this.projects = this.af.database.list('/projectList')
   }
 
-  saveProject(form) {
+  addProject(form) {
 
-    console.log(form)
-
+    this.projects.push(form.value).then(res => console.log(res.key))
   }
-
-  listProjects() {
-
-    this.projectService.getProjectData().subscribe(res => {
-      console.log(res);
-      this.projects = res[0]
-      return this.projects
-    });
-  }
-
 }

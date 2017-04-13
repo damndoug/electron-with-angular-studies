@@ -5,7 +5,7 @@
       <label>Nome do Projeto</label>
       <div class="two fields">
         <div class="field">
-          <input type="text" placeholder="Nome do Projeto" ngModel name="projectName" required>
+          <input type="text" placeholder="Nome do Projeto" ngModel name="name" required>
         </div>
         <div class="field">
           <select class="ui fluid dropdown" ngModel name="team" required>
@@ -20,11 +20,11 @@
     <div class="fields">
       <div class="four wide field">
         <label>Saving Estimado</label>
-        <input type="text" ngModel name="saving" placeholder="R$ 10.000,00" required>
+        <input type="number" step="any" ngModel name="saving" placeholder="R$ 10.000,00" required>
       </div>
-      <div class="four wide field">
+      <div class="five wide field">
         <label>Prazo Estimado</label>
-        <input type="text" ngModel name="sla" placeholder="DD/MM/AAAA" required>
+        <input type="date" ngModel name="sla" placeholder="DD/MM/AAAA" value="" required>
       </div>
       <div class="four wide field">
         <label>Filial</label>
@@ -43,15 +43,18 @@
         <textarea ngModel name="obs"></textarea>
       </div>
     </div>
-    <button class="ui button" type="submit" (click)="saveProject(f)">Salvar</button>
+    <button class="ui button" type="submit" (click)="addProject(f)">Salvar</button>
   </form>
 </div>
 
 <div class="ui raised very padded text segment container">
-  <h4 class="ui diving header">Projetos Cadastrados</h4>
-  <div>
-    <ul>
-      <!--<li *ngFor="let project of projects"> {{(project | async)?.name}}</li>-->
-    </ul>
+<h4 class="ui diving header">Projetos Cadastrados</h4>
+<div class="ui relaxed divided list">
+  <div class="item" *ngFor="let project of projects | async">
+    <i class="large tasks middle aligned icon"></i>
+    <div class="content">
+      <a class="header">{{ (project)?.name }}</a>
+      <div class="description">O deve ser finalizado até {{ (project)?.sla }} na filial {{ (project)?.branch }} </div>
+    </div>
   </div>
 </div>
