@@ -30,8 +30,8 @@
         <label>Filial</label>
         <select class="ui fluid search dropdown" ngModel name="branch" required> 
           <option value="">Filial</option>
-          <option value="1">ABC</option>
-          <option value="2">SBC</option>
+          <option value="">ABC</option>
+          <option value="">SBC</option>
         </select>
       </div>
     </div>
@@ -43,8 +43,19 @@
         <textarea ngModel name="obs"></textarea>
       </div>
     </div>
-    <button class="ui button" type="submit" (click)="addProject(f)">Salvar</button>
+
+    <div [innerHtml]="htmlToAdd"></div>
+
+    <div class="input-margin">
+      <div *ngIf="thereIsTask" class="ui input">
+        <input type="text" name="task" (keyup.enter)="addTask(f)" [(ngModel)]=task placeholder="Adicione a tarefa">
+      </div>
+    </div>
+
   </form>
+  
+  <button class="ui button right floated" type="submit" (click)="addProject(f)">Salvar</button>
+  <button class="ui button" (click)="addTaskInput(f)">Adicionar Tarefas</button>
 </div>
 
 <div class="ui raised very padded text segment container">
@@ -56,5 +67,7 @@
       <a class="header">{{ (project)?.name }}</a>
       <div class="description">O deve ser finalizado até {{ (project)?.sla }} na filial {{ (project)?.branch }} </div>
     </div>
+    <button class="ui button right floated trash outline icon" (click)="removeProject(project)"><i class="trash outline icon"></i></button>
+    <button class="ui button right floated" (click)="editProject(project)" >Editar</button>
   </div>
 </div>

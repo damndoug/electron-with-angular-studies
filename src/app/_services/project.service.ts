@@ -5,14 +5,28 @@ import { Injectable } from "@angular/core";
 export class ProjectService {
 
     af: AngularFire;
+    obj;
 
     constructor(af: AngularFire) {
         this.af = af;
     }
 
-    getProjectData() {
+    getProjectKeys() {
 
-        return this.af.database.list('/projectList')
+        let keys = [];
+
+        this.obj = this.af.database.list('/projectList')
+
+        this.obj.forEach(key => {
+            for (var item = 0; item < key.length; item++) {
+                var element = key[item].$key;
+                keys.push(element);
+            }
+        });
+
+        console.log(keys)
+        return keys
+
     }
 
 }
