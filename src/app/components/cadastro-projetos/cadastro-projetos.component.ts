@@ -1,6 +1,7 @@
 import { ProjectService } from './../../_services/project.service';
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, Renderer } from '@angular/core';
 import { FirebaseListObservable, AngularFire } from "angularfire2";
+declare var $:JQueryStatic;
 
 @Component({
   selector: 'cadastro-projetos',
@@ -12,12 +13,12 @@ export class CadastroProjetosComponent implements OnInit {
   projectService;
   projects: FirebaseListObservable<any>;
   thereIsTask: boolean = false;
-  task;
-  tasks;
+  tasks = [];
   keys = [];
   htmlToAdd: string = '';
+  @ViewChild('progressBar') el:ElementRef;
 
-  constructor(private af: AngularFire, private ps: ProjectService) {
+  constructor(private af: AngularFire, private ps: ProjectService, private renderer: Renderer) {
     this.keys = ps.getProjectKeys();
   } 
 
@@ -52,9 +53,29 @@ export class CadastroProjetosComponent implements OnInit {
     
   addTask(form){
 
-    console.log(form)
+    this.tasks.push(form.value.task);
+
+    $('#progressBar')
+      .progress('set progress',this.tasks.length)
     
-    // this.af.database.object('/projectList/')
-    // this.tasks.push(form.value).then(res => console.log(res.key))
   }  
+
+  removeTask(task) {
+    
+    let index = this.tasks.indexOf(task);
+    if (index > -1) {
+      this.tasks.splice(index, 1);
+    }
+    console.log(this.tasks)
+  }
+
+  toggleCheckboxes() {
+
+    $('.ui.checkbox')
+      .checkbox({
+        beforeChecked: counter => {
+          counter += 1
+        }
+      })
+  }
 }
