@@ -1,7 +1,6 @@
 import { ProjectService } from './../../_services/project.service';
 import { Component, OnInit, Input, ViewChild, ElementRef, Renderer } from '@angular/core';
 import { FirebaseListObservable, AngularFire } from "angularfire2";
-declare var $:JQueryStatic;
 
 @Component({
   selector: 'cadastro-projetos',
@@ -55,8 +54,8 @@ export class CadastroProjetosComponent implements OnInit {
 
     this.tasks.push(form.value.task);
 
-    $('#progressBar')
-      .progress('set progress',this.tasks.length)
+    // $('#progressBar')
+    //   .progress('set progress',this.tasks.length)
     
   }  
 
@@ -71,11 +70,11 @@ export class CadastroProjetosComponent implements OnInit {
 
   toggleCheckboxes() {
 
-    $('.ui.checkbox')
-      .checkbox({
-        beforeChecked: counter => {
-          counter += 1
-        }
-      })
+    // $('.ui.checkbox')
+    //   .checkbox({
+    //     beforeChecked: counter => {
+    //       counter += 1
+    //     }
+    //   })
   }
 }
