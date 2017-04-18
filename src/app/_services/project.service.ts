@@ -24,7 +24,6 @@ export class ProjectService {
             }
         });
 
-        console.log(keys)
         return keys
 
     }

@@ -28,7 +28,8 @@ export class CadastroProjetosComponent implements OnInit {
 
   addProject(form) {
 
-    this.projects.push(form.value).then(res => console.log(res.key))
+    console.log(form.value)
+    // this.projects.push(form.value).then(res => console.log(res.key))
   }
 
   removeProject(project) {
@@ -65,16 +66,10 @@ export class CadastroProjetosComponent implements OnInit {
     if (index > -1) {
       this.tasks.splice(index, 1);
     }
-    console.log(this.tasks)
   }
 
-  toggleCheckboxes() {
+  toggleCheckboxes(event) {
 
-    // $('.ui.checkbox')
-    //   .checkbox({
-    //     beforeChecked: counter => {
-    //       counter += 1
-    //     }
-    //   })
+    console.log(event.target.nextElementSibling.innerText)
   }
 }

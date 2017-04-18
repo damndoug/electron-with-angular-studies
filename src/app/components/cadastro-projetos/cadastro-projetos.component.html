@@ -53,7 +53,7 @@
     <div> 
       <div  class="fix-task-padding" *ngFor="let task of tasks">
         <div class="ui checkbox">
-          <input type="checkbox" (click)="toggleCheckboxes()">
+          <input name="task" type="checkbox" (click)="toggleCheckboxes($event)">
           <label ngDefaultControl>{{task}}</label>
         </div>
       <button type="button" class="ui button right floated trash outline icon" (click)="removeTask(task)"><i class="trash outline icon"></i></button>
