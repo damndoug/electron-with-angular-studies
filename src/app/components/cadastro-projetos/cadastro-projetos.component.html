@@ -43,11 +43,17 @@
       </div>
     </div>
 
-    <div class="ui indicating progress" id="progressBar">
-      <div class="bar">
-        <div class="progress"></div>
-      </div>
-      <div class="label">Progresso</div>
+    <h4 class="ui dividing header">Progresso do projeto</h4>
+    <h4 class="ui dividing header">{{ progressBarLabelValue }}</h4>
+
+    <div class="ui field">
+      <md-progress-bar
+          class="example-margin"
+          [color]="color"
+          [mode]="mode"
+          [value]="value"
+          [bufferValue]="bufferValue">
+      </md-progress-bar>
     </div>
 
     <div> 
@@ -56,12 +62,10 @@
           <input name="task" type="checkbox" (click)="toggleCheckboxes($event)">
           <label ngDefaultControl>{{task}}</label>
         </div>
-      <button type="button" class="ui button right floated trash outline icon" (click)="removeTask(task)"><i class="trash outline icon"></i></button>
+        <button type="button" class="ui button right floated trash outline icon" (click)="removeTask(task, $event)"><i class="trash outline icon"></i></button>
       </div>
     </div>
 
-    <div [innerHtml]="htmlToAdd"></div>
-    
     <div class="input-margin">
       <div *ngIf="thereIsTask" class="ui input">
         <input type="text" name="task" (keyup.enter)="addTask(f)" [(ngModel)]=task placeholder="Adicione a tarefa">

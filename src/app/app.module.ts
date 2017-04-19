@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { MdProgressBar } from "@angular/material";
 
 import { AppComponent } from './app.component';
 import { MenuLateralComponent } from './components/menu-lateral/menu-lateral.component';
@@ -27,7 +28,8 @@ export const firebaseConfig = {
     MenuLateralComponent,
     IntroComponent,
     CadastroProjetosComponent,
-    UserComponent
+    UserComponent,
+    MdProgressBar
   ],
   imports: [
     BrowserModule,
