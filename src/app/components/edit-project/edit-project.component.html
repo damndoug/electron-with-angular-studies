@@ -51,8 +51,7 @@
           class="example-margin"
           [color]="color"
           [mode]="mode"
-          [value]="value"
-          [bufferValue]="bufferValue">
+          [value]="value">
       </md-progress-bar>
     </div>
 
@@ -76,18 +75,4 @@
   
   <button class="ui button right floated" type="submit" (click)="addProject(f)">Salvar</button>
   <button class="ui button" (click)="addTaskInput(f)">Adicionar Tarefas</button>
-</div>
-
-<div class="ui raised very padded text segment container">
-<h4 class="ui diving header">Projetos Cadastrados</h4>
-<div class="ui relaxed divided list">
-  <div class="item" *ngFor="let project of projects | async">
-    <i class="large tasks middle aligned icon"></i>
-    <div class="content">
-      <a routerLink='/edit-projects' class="header">{{ (project)?.name }}</a>
-      <div class="description">O deve ser finalizado até {{ (project)?.sla }} na filial {{ (project)?.branch }} </div>
-    </div>
-    <button class="ui button right floated trash outline icon" (click)="removeProject(project)"><i class="trash outline icon"></i></button>
-    <button class="ui button right floated" (click)="editProject(project)">Editar</button>
-  </div>
 </div>
