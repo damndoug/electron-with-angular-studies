@@ -16,7 +16,6 @@ export class CadastroProjetosComponent implements OnInit {
   color = 'primary';
   mode = 'determinate';
   value = 0
-  bufferValue = 0;
   
   progressBarInitialValue = 0;
   progressDefaultMessage: string = 'Não há tarefas para esse projeto ainda.'
@@ -25,9 +24,6 @@ export class CadastroProjetosComponent implements OnInit {
   thereIsTask: boolean = false;
   tasks = [];
   keys = [];
-  htmlToAdd: string = '';
-  
-  
 
   constructor(private af: AngularFire, private ps: ProjectService) {
     this.keys = ps.getProjectKeys();
@@ -115,7 +111,7 @@ export class CadastroProjetosComponent implements OnInit {
 
       
     
-    this.progressBarLabelValue = 'Projeto está ' + progressBarFinalValue + "% concluído"
+    this.progressBarLabelValue = 'Projeto está ' + Math.round(progressBarFinalValue) + "% concluído"
     
     if (tasks === 0)
       this.progressBarLabelValue = this.progressDefaultMessage;
