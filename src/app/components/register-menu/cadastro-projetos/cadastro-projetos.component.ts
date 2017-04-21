@@ -1,5 +1,5 @@
-import { AddProjectFormModel } from './../../../_models/add-project-form.model';
-import { ProjectService } from './../../_services/project.service';
+import { AddProjectFormModel } from './../../../../_models/add-project-form.model';
+import { ProjectService } from './../../../_services/project.service';
 import { Component, OnInit, Input, ViewChild, ElementRef, Renderer } from '@angular/core';
 import { FirebaseListObservable, AngularFire } from "angularfire2";
 
@@ -120,6 +120,11 @@ export class CadastroProjetosComponent implements OnInit {
       this.formModel.isProjectCompleted = true;
     else 
       this.formModel.isProjectCompleted = false;
+  }
+
+  editProject(project) {
+    
+    console.log(project)
   }
 
   clearForm(form){

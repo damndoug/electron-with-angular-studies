@@ -1,6 +1,16 @@
 import { AngularFire } from 'angularfire2';
 import { Injectable } from "@angular/core";
 
+export class ProjectModel {
+    $key
+    branch
+    name
+    obs
+    saving
+    sla
+    team
+}
+
 @Injectable()
 export class ProjectService {
 

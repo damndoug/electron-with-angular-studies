@@ -10,10 +10,10 @@ import { MdProgressBar } from "@angular/material";
 import { AppComponent } from './app.component';
 import { MenuLateralComponent } from './components/menu-lateral/menu-lateral.component';
 import { IntroComponent } from './components/intro/intro.component';
-import { CadastroProjetosComponent } from './components/cadastro-projetos/cadastro-projetos.component';
+import { CadastroProjetosComponent } from './components/register-menu/cadastro-projetos/cadastro-projetos.component';
 import { AngularFireModule } from "angularfire2";
-import { EditProjectComponent } from './components/edit-project/edit-project.component';
-import { ProjectsMenuComponent } from './components/projects-menu/projects-menu.component';
+import { EditProjectComponent } from './components/register-menu/edit-project/edit-project.component';
+import { RegisterMenuComponent } from './components/register-menu/register-menu.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAKrfDFqBI0YTrtnVu6rHcABkNapypMCtA",
@@ -33,7 +33,7 @@ export const firebaseConfig = {
     UserComponent,
     MdProgressBar,
     EditProjectComponent,
-    ProjectsMenuComponent
+    RegisterMenuComponent
   ],
   imports: [
     BrowserModule,

@@ -84,10 +84,10 @@
   <div class="item" *ngFor="let project of projects | async">
     <i class="large tasks middle aligned icon"></i>
     <div class="content">
-      <a routerLink='/edit-projects' class="header">{{ (project)?.name }}</a>
-      <div class="description">O deve ser finalizado até {{ (project)?.sla }} na filial {{ (project)?.branch }} </div>
+      <a routerLink='/edit-projects' (click)="editProject(project)" class="header">{{ (project)?.name }}</a>
+      <div class="description">O deve ser finalizado até {{ (project)?.sla | date: 'dd/mm/yyyy' }} na filial {{ (project)?.branch }} </div>
     </div>
     <button class="ui button right floated trash outline icon" (click)="removeProject(project)"><i class="trash outline icon"></i></button>
-    <button class="ui button right floated" (click)="editProject(project)">Editar</button>
+    <a routerLink='/edit-projects' class="ui button right floated" (click)="editProject(project)">Editar</a>
   </div>
 </div>
