@@ -1,3 +1,5 @@
+import { Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { AddProjectFormModel } from './../../../../_models/add-project-form.model';
 import { ProjectService } from './../../../_services/project.service';
 import { Component, OnInit, Input, ViewChild, ElementRef, Renderer } from '@angular/core';
@@ -25,9 +27,21 @@ export class CadastroProjetosComponent implements OnInit {
   tasks = [];
   keys = [];
 
-  constructor(private af: AngularFire, private ps: ProjectService) {
+  projectForm: FormGroup;
+
+  constructor(private af: AngularFire, private ps: ProjectService, fb: FormBuilder) {
+
     this.keys = ps.getProjectKeys();
     this.formModel = new AddProjectFormModel();
+    this.projectForm = fb.group({
+      'name': [null, Validators.required],
+      'team': [null, Validators.required],
+      'saving': [null],
+      'sla': [null],
+      'branch': [null, Validators.required],
+      'obs': [null],
+      'task': [null]
+    });
   } 
 
   ngOnInit() {
@@ -35,18 +49,18 @@ export class CadastroProjetosComponent implements OnInit {
     this.projects = this.af.database.list('/projectList')
   }
 
-  addProject(form) {
+  addProject() {
 
-    this.formModel.name = form.value.name;
-    this.formModel.branch = form.value.branch;
-    this.formModel.obs = form.value.obs;
-    this.formModel.saving = form.value.saving;
-    this.formModel.sla = form.value.sla;
-    this.formModel.team = form.value.team;
-    this.formModel.tasks = this.tasks;
+    // this.formModel.name = this.projectForm.value.name;
+    // this.formModel.branch = this.projectForm.value.branch;
+    // this.formModel.obs = this.projectForm.value.obs;
+    // this.formModel.saving = this.projectForm.value.saving;
+    // this.formModel.sla = this.projectForm.value.sla;
+    // this.formModel.team = this.projectForm.value.team;
+    // this.formModel.tasks = this.tasks;
     
     this.projects.push(this.formModel).then(res => console.log(res.key))
-    this.clearForm(form);
+    this.clearForm();
   }
 
   removeProject(project) {
@@ -59,9 +73,9 @@ export class CadastroProjetosComponent implements OnInit {
     this.thereIsTask = true;
   }
     
-  addTask(form){
+  addTask(){
 
-    this.tasks.push(form.value.task);
+    this.tasks.push(this.projectForm.value.task);
     this.progressBarLabelValue = 'Projeto está ' + this.value + "% concluído"
   }  
 
@@ -127,10 +141,9 @@ export class CadastroProjetosComponent implements OnInit {
     console.log(project)
   }
 
-  clearForm(form){
-    console.log(form);
+  clearForm(){
     this.tasks = [];
     this.thereIsTask = false;
-    form.reset();
+    this.projectForm.reset();
   }
 }

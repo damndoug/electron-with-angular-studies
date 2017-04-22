@@ -19,7 +19,7 @@
 
 <div class="ui raised very padded text segment container">
     <h4 class="ui dividing header">Cadastro de Usuários</h4>
-    <form [formGroup]="userForm" name="userForm" (ngSubmit)="addUser()" class="ui form">
+    <form [formGroup]="userForm" (ngSubmit)="addUser()" class="ui form">
         <div class="field">
             <label for="">Nome do Usuário</label>
             <input type="text" [formControl]="userForm.controls['name']" name="name" placeholder="Fulano Dee Tall" ngModel>
