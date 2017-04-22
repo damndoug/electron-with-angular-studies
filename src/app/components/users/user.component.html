@@ -1,78 +1,74 @@
 <div class="ui raised very padded text segment container">
     <h4 class="ui dividing header">Lista de Usuários</h4>
     <table class="ui fixed single line celled table">
-    <thead>
-        <tr><th>Nome</th>
-        <th>Email</th>
-        <th>Tipo de Acesso</th>
-    </tr></thead>
-    <tbody>
-        <tr>
-        <td>Douglas</td>
-        <td>douglas.pires@live.com</td>
-        <td>Total</td>
-        </tr>
-        <tr>
-        <td>Leonardo</td>
-        <td>leonardo.libra@tntbrasil.com.br</td>
-        <td>Total</td>
-        </tr>
-        <tr>
-        <td>Usuário Teste</td>
-        <td>fulano@email.com</td>
-        <td>Parcial</td>
-        </tr>
-    </tbody>
-    </table>
-</div>
-
-<div class="ui raised very padded text segment container">
-    <h4 class="ui dividing header">Lista de Usuários</h4>
-    <table class="ui fixed single line celled table">
-    <thead>
-        <tr><th>Nome</th>
-        <th>Email</th>
-        <th>Tipo de Acesso</th>
-    </tr></thead>
-    <tbody *ngFor="let user of users">
-        <tr>
-        <td>{{user.name}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.accessType}}</td>
-        </tr>
-        <tr>
-        <td>Leonardo</td>
-        <td>leonardo.libra@tntbrasil.com.br</td>
-        <td>Total</td>
-        </tr>
-        <tr>
-        <td>Usuário Teste</td>
-        <td>fulano@email.com</td>
-        <td>Parcial</td>
-        </tr>
-    </tbody>
+        <thead>
+            <tr><th>Nome</th>
+            <th>Email</th>
+            <th>Tipo de Acesso</th>
+        </tr></thead>
+        <tbody *ngFor="let user of users">
+            <tr>
+                <td>{{ (user)?.name }}</td>
+                <td>{{ (user)?.email }}</td>
+                <td>{{ (user)?.accessType }}</td>
+            </tr>
+        </tbody>
     </table>
 </div>
 
 
 <div class="ui raised very padded text segment container">
     <h4 class="ui dividing header">Cadastro de Usuários</h4>
-    <form class="ui form">
+    <form [formGroup]="userForm" name="userForm" (ngSubmit)="addUser()" class="ui form">
         <div class="field">
             <label for="">Nome do Usuário</label>
-            <input type="text" name="newUserName" value="" placeholder="Fulano Dee Tall">
+            <input type="text" [formControl]="userForm.controls['name']" name="name" placeholder="Fulano Dee Tall" ngModel>
+            
+            <div *ngIf="!userForm.valid && userForm.controls['name'].touched && userForm.controls['name'].pristine" class="ui negative message transition">
+                <div class="header">
+                    Usuário inválido.
+                </div>
+                <p>Escreva um nome apropriado.</p>
+            </div> 
+
         </div>
+
         <div class="field">
             <label for="">Email</label>
-            <input type="text" name="newUserMail" value="" placeholder="fulano@deetall.com">
+            <input type="email" [formControl]="userForm.controls['email']" name="email" placeholder="fulano@deetall.com" ngModel>
+            
+            <div *ngIf="!userForm.valid && userForm.controls['email'].touched && (userForm.controls['email'].pristine || !userForm.controls['email'].valid)" class="ui negative message transition">
+                <div class="header">
+                    E-mail inválido.
+                </div>
+                <p>Escreva um e-mail.</p>
+            </div> 
+
         </div>
+
         <div class="field">
             <label for="">Tipo de Acesso</label>
-            <select name="" id="">
-                <option value=""> Parcial</option>
-                <option value=""> Total</option>
+            <select [formControl]="userForm.controls['accessType']" name="accessType" id="" ngModel>
+                <option> Parcial</option>
+                <option> Total</option>
             </select> 
+            
+            <div *ngIf="!userForm.valid && userForm.controls['accessType'].touched && userForm.controls['accessType'].pristine" class="ui negative message transition">
+                <div class="header">
+                    Tipo de acesso não escolhido.
+                </div>
+                <p>Escolha um tipo de acesso.</p>
+            </div> 
         </div>
-        <button type="submit" class="ui button">Salvar Usuário</button>
+
+        <button type="submit" class="ui button" [disabled]="!userForm.valid">Salvar Usuário</button>
+
+        <div *ngIf="userForm.submitted" class="ui positive message">
+            <div class="header">
+                Usuário salvo!
+            </div>
+            <p>Usuário registrado com sucesso.</p>
+        </div>
+        
     </form>
 </div>

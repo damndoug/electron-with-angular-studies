@@ -1,9 +1,10 @@
+import { UserService } from './_services/user.service';
 import { ProjectService } from './_services/project.service';
 import { UserComponent } from './components/users/users.component';
 import { routing } from './app.router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MdProgressBar } from "@angular/material";
 
@@ -38,11 +39,12 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     routing,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [ProjectService],
+  providers: [ProjectService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

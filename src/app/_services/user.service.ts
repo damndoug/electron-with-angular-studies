@@ -15,11 +15,9 @@ export class UserService {
     return this.af.database.list('/userList')
   }
 
-  addUser(user: any) {
+  postUser(user: any) {
     
-    let id;
-    id = user.count
-    this.af.database.list('/userlist/' + id).push(user)
+    this.af.database.list('/userList/').push(user)
   }
 
 }
