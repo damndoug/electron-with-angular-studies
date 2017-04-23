@@ -1,39 +1,47 @@
 <div class="ui raised very padded text segment container">
-  <form [formGroup]="projectForm" class="ui form" (ngSubmit)="addProject()">
+  <form [formGroup]="projectForm" class="ui form">
     <h4 class="ui dividing header">Cadastro de Projetos</h4>
+    
     <div class="field">
-      <label>Nome do Projeto</label>
+    
       <div class="two fields">
         <div class="field">
+          <label>Nome do Projeto *</label>
           <input formControlName="name" type="text" placeholder="Nome do Projeto" name="name">
         </div>
+    
         <div class="field">
+          <label>Escolha o Time *</label>
           <select formControlName="team" class="ui fluid dropdown" name="team">
-            <option value="Escolha o Time">Escolha o Time</option>
-            <option value="Exec">Execução</option>
-            <option value="Compras">Compras</option>
-            <option value="Ops">Operações</option>
+            <option>Execução</option>
+            <option>Compras</option>
+            <option>Operações</option>
           </select>
         </div>
       </div>
+    
     </div>
     <div class="fields">
+
       <div class="four wide field">
         <label>Saving Estimado</label>
         <input formControlName="saving" type="number" step="any" name="saving" placeholder="R$ 10.000,00">
       </div>
+
       <div class="five wide field">
         <label>Prazo Estimado</label>
-        <input formControlName="sla" type="date" name="sla" placeholder="DD/MM/AAAA" value="">
+        <input formControlName="sla" type="date" name="sla" placeholder="DD/MM/AAAA">
       </div>
+      
       <div class="four wide field">
-        <label>Filial</label>
+        <label>Filial *</label>
         <select formControlName="branch" class="ui fluid search dropdown" name="branch"> 
-          <option value="">Filial</option>
-          <option value="">ABC</option>
-          <option value="">SBC</option>
+          <option>Filial</option>
+          <option>ABC</option>
+          <option>SBC</option>
         </select>
       </div>
+      
     </div>
 
     <h4 class="ui dividing header">Observações</h4>
@@ -71,10 +79,10 @@
         <input type="text" formControlName="task" name="task" (keyup.enter)="addTask(f)" placeholder="Adicione a tarefa">
       </div>
     </div>
-
+    
   </form>
-  
-  <button class="ui button right floated" type="submit">Salvar</button>
+  <p>*Campos requeridos</p>
+  <button class="ui button right floated" type="submit" (click)="addProject()" [disabled]="!projectForm.valid" >Salvar</button>
   <button class="ui button" (click)="addTaskInput(f)">Adicionar Tarefas</button>
 </div>
 

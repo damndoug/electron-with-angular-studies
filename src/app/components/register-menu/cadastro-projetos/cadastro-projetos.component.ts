@@ -1,8 +1,9 @@
+import { FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AddProjectFormModel } from './../../../../_models/add-project-form.model';
 import { ProjectService } from './../../../_services/project.service';
-import { Component, OnInit, Input, ViewChild, ElementRef, Renderer } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FirebaseListObservable, AngularFire } from "angularfire2";
 
 @Component({
@@ -34,13 +35,13 @@ export class CadastroProjetosComponent implements OnInit {
     this.keys = ps.getProjectKeys();
     this.formModel = new AddProjectFormModel();
     this.projectForm = fb.group({
-      'name': [null, Validators.required],
-      'team': [null, Validators.required],
-      'saving': [null],
-      'sla': [null],
-      'branch': [null, Validators.required],
-      'obs': [null],
-      'task': [null]
+      name: new FormControl(null, Validators.required),
+      team: new FormControl(null, Validators.required),
+      saving: [null],
+      sla: [null],
+      branch: new FormControl(null, Validators.required),
+      obs: [null],
+      task: [null]
     });
   } 
 
@@ -51,13 +52,13 @@ export class CadastroProjetosComponent implements OnInit {
 
   addProject() {
 
-    // this.formModel.name = this.projectForm.value.name;
-    // this.formModel.branch = this.projectForm.value.branch;
-    // this.formModel.obs = this.projectForm.value.obs;
-    // this.formModel.saving = this.projectForm.value.saving;
-    // this.formModel.sla = this.projectForm.value.sla;
-    // this.formModel.team = this.projectForm.value.team;
-    // this.formModel.tasks = this.tasks;
+    this.formModel.name = this.projectForm.value.name;
+    this.formModel.branch = this.projectForm.value.branch;
+    this.formModel.obs = this.projectForm.value.obs;
+    this.formModel.saving = this.projectForm.value.saving;
+    this.formModel.sla = this.projectForm.value.sla;
+    this.formModel.team = this.projectForm.value.team;
+    this.formModel.tasks = this.tasks;
     
     this.projects.push(this.formModel).then(res => console.log(res.key))
     this.clearForm();
@@ -97,7 +98,6 @@ export class CadastroProjetosComponent implements OnInit {
       this.tasks.splice(index, 1);
     }
 
-
     this.calculateProgressBar(this.tasks.length)
   }
 
@@ -122,9 +122,6 @@ export class CadastroProjetosComponent implements OnInit {
       progressBarFinalValue = 0
     
     this.value = progressBarFinalValue;
-
-      
-    
     this.progressBarLabelValue = 'Projeto está ' + Math.round(progressBarFinalValue) + "% concluído"
     
     if (tasks === 0)
